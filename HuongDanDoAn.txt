@@ -17,7 +17,6 @@ FILE HƯỚNG DẪN SỬ DỤNG ĐỒ ÁN TỐT NGHIỆP
 	- Tạo dữ liệu: 
 		+ php artisan db:seed
 		+ php artisan hcvn:install
-	*Cách 2: Thêm file shop.sql vào Mysql
 6. Bắt đầu trang web
 - Mở terminal thứ 1: npm run watch
 - Mở terminal thứ 2: php artisan serve
