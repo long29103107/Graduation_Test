@@ -23,6 +23,4 @@
             var toAutoComplete = new google.maps.places.Autocomplete(toInput,options);
         }
     </script>
-	<script type="text/javascript" scr="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY')
-    }}&libraries=place&callback=cities"></script>
 @endsection

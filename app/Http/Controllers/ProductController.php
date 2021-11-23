@@ -88,24 +88,7 @@ class ProductController extends Controller
                             ->paginate(5)
                             ->getCollection()
                             ->toArray();
-                           
-        // $comments = new  Collection(array_reverse($comments));
-        //  dd($comments);
-        // if(!isset($_SESSION["total_qty"][$id])){
-        //     $_SESSION["total_qty"][$id] = 0;
-        // }
-        // if(isset($_SESSION["quantity_limit"][$id])){
-        //     //echo "có session";
-        //     $_SESSION["quantity_limit"][$id] = $product->infor->quantity - $_SESSION["total_qty"][$id];
-        // }else{
-        //     //echo "ko có session";
-        //     $_SESSION["quantity_limit"] = array();
-        //     $_SESSION["quantity_limit"][$id] = $product->quantity;
-        // }
-        // if($_SESSION["quantity_limit"][$id] < 0){// nếu giới hạn sl là âm thì gán bằng 0
-        //     $_SESSION["quantity_limit"][$id] = 0;
-        // }
-        // Session::put('product_qty_limit',$_SESSION["quantity_limit"][$id]);
+
         $color = Color::whereNull('deleted_at')->whereIn('id',$list_color_id)->get();
 
         if(!empty($color))
@@ -198,53 +181,8 @@ class ProductController extends Controller
                 'data' => $sizes,
         ]);
     }
-    public function quickview(Request $request){
-        $product_id = $request->product_id;
-        $product = Product::where('id',$product_id)->first();
-        $image_products = ImageProduct::where('product_id',$product_id)->where('is_primary', 1)->first();
-        $output["name"] = $product->name;
-        $output["id"] = $product->id;
-        $output["description"] = $product->description;
-        $output["price"] = number_format($product->price,0,',','.').'VNĐ';
-        $output["image"] = '<p><img width="100%" src="'.url($image_products->path).'"></p>';
-        // $output["product_quickview_value"] = '
-        //     <input type="hidden" value="'.$product->product_id.'" class="cart_product_id_'.$product->product_id.'">
-        //     <input type="hidden" value="'.$product->product_name.'" class="cart_product_name_'.$product->product_id.'">
-        //     <input type="hidden" value="'.$product->product_price.'" class="cart_product_price_'.$product->product_id.'">
-        //     <input type="hidden" value="'.$product->product_image.'" class="cart_product_image_'.$product->product_id.'">
-        //     <input type="hidden" value="1" class="cart_product_qty_'.$product->product_id.'">
-        // ';
-        echo json_encode($output);
-    }
-    public function post_comment($id, Request $request){
-        $product_id = $id;
-        $product = Product::find($id);  
-        $comment = new Comment();
-        $comment->product_id = $product_id;
-        $comment->user_id = Auth::user()->id;
-        $comment->comment_text = $request->content;
-        $comment->save();
-
-        return redirect('show_detail/$id/'.$product->TieuDeKhongDau.".html")->with('thongbao','Viết bình luận thành công');
-    }
     public function add_wishlist(Request $request){
-        // $id_product = $request->id_product;
-        // $id_user = $request->id_user;
-        // $list_wish = Wishlist::where('user_id',$id_user)->where('product_id',$id_product)->first();
-        // if($list_wish == null){
-        //     $list_wish = new Wishlist();
-        //     $list_wish->product_id = $id_product;
-        //     $list_wish->user_id = $id_user;
-        //     if($list_wish->save()){
-        //         echo 1;
-        //     }else{
-        //         echo -1;
-        //     } 
-        //     //echo 1;
-        // }else{
-        //     echo 0;
-        // }
-
+      
         if(!Auth::check())
         {
             return response()->json([
@@ -350,15 +288,6 @@ class ProductController extends Controller
     }
 
     public function show_wishlist(Request $request){
-        // $list_wish = Wishlist::whereNull('deleted_at')->get();
-        // $categories = Category::whereNull('deleted_at')->get();
-        
-        // $slides = Slide::whereNull('deleted_at')->orderBy('created_at','desc')->offset(0)->limit(4)->get();
-        // $product_wish = DB::table('products')->join('wishlists','products.id','wishlists.product_id')->paginate(12);
-        // // dd($product_wish);
-        // return view('user.product.show_wishlist', compact('categories','product_wish','slides'));
-        // $list_id_product = array_unique(ProductDetail::whereNull('deleted_at')->get()->pluck('product_id')->toArray());
-        // dd($list_id_product);
         if(!Auth::check())
         {
             return redirect('/login');
@@ -382,11 +311,5 @@ class ProductController extends Controller
         $infor_contact = InforContact::all();
 
         return view('user.home.wishlist',  compact('infor_contact','categories','products','slides','title','isWishlist','paginate', 'category_post'));
-    }
-    public function save_compare_product(Request $request){
-        
-    }
-
-    public function compare_product(Request $request){
     }
 }

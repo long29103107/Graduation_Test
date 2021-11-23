@@ -62,7 +62,8 @@ class HomeController extends Controller
                     $query->orderBy('id','DESC');
             }
         }
-
+        $min = $min_price;
+        $max= $max_price;
         if(!empty($request->range_price)){
             $array_range = explode(',',$request->range_price);
             if(count($array_range) >= 2)
@@ -78,17 +79,7 @@ class HomeController extends Controller
         $is_home = true;
         $title = 'Trang chủ';
         $tab_products = Category::offset(0)->limit(5)->get(); 
-        // dd($max, $min);
-         //Sản phẩm bán chạy
 
-        // $product_top_sale = DB::table('order_details')
-        //     ->join('product_details', 'order_details.product_detail_id', '=', 'product_details.id')
-        //     ->join('products','products.id', '=', 'product_details.product_id')
-        //     ->select(DB::raw('sum(order_details.price) as total_price'),'products.id','products.name', 'products.price')
-        //     ->groupBy('products.id','products.name', 'products.price')
-        //     ->orderBy('total_price','desc')
-        //     ->limit(12)
-        //     ->get()->toArray();    
         $product_top_sale = DB::table('order_details')
             ->join('product_details', 'order_details.product_detail_id', '=', 'product_details.id')
             ->join('products','products.id', '=', 'product_details.product_id')
@@ -105,56 +96,23 @@ class HomeController extends Controller
         {
             $product_top_sale = array_splice($product_top_sale,0,array_key_last($product_top_sale));
         };
-        // dd($product_top_sale);
-        // $product_top_wish = DB::table('wishlists')
-        //     ->join('products','products.id', '=', 'wishlists.product_id')
-        //     ->join('image_products','image_products.product_id', '=', 'products.id')->where('image_products.is_primary',1)
-        //     ->select(DB::raw('sum(wishlists.product_id) as product_id'),'products.id','products.name', 'image_products.path', 'products.price')
-        //     ->groupBy('products.id','products.name', 'image_products.path', 'products.price')
-        //     ->orderBy('product_id','desc')
-        //     ->limit(12)
-        //     ->get()->toArray();    
+
         $list_id_product_wishlist = Wishlist::select('product_id', DB::raw('COUNT(product_id) as count_product'))
                                     ->groupBy('product_id')
                                     ->orderBy('count_product', 'desc')
                                     ->offset(0)->limit(12)
                                     ->get()->pluck('product_id')->toArray();
-        // dd( (int)floor(count($list_id_product_wishlist) / 3));
         $list_id_product_wishlist = array_splice($list_id_product_wishlist ,0, (int)floor(count($list_id_product_wishlist) / 3) * 3);
-        // dd($list_id_product_wishlist);
+       
         $product_top_wish = Product::whereIn('id', $list_id_product_wishlist)->get()->toArray();
 
         $product_top_wish = collect($product_top_wish)->chunk(3)->toArray(); 
-
-        // $product_top_wish = collect($product_top_wish)->chunk(3)->toArray(); 
-        
-        // if(end($product_top_wish) && count(end($product_top_wish)) < 3)
-        // {
-        //     $product_top_wish = array_splice($product_top_wish,0,array_key_last($product_top_wish));
-        // };
-        // dd($product_top_wish);
-      
        
-        return view('user.home.index', compact('title','categories','products','slides', 'max_price', 'min_price', 'category_post','is_home', 'tab_products', 'product_top_sale', 'product_top_wish', 'infor_contact'));
+        return view('user.home.index', compact('title', 'min', 'max', 'categories','products','slides', 'max_price', 'min_price', 'category_post','is_home', 'tab_products', 'product_top_sale', 'product_top_wish', 'infor_contact'));
     }
 
-    // public function show_product(Request $request){
-    //     if($request->option == 'grid'){
-    //         Session::put('show_product','grid');
-    //     }elseif($request->option == 'list'){
-    //         Session::put('show_product','list');
-    //     }
-    //     echo json_encode(1);
-    // }
     public function autocomplete_ajax(Request $request){
-
         $product = Product::where('name','like','%'.$request->key_word.'%')->where('status', 1)->limit(6)->get();
-        
-        // $output ='<ul class="show">';
-        // foreach($product as $key=>$value){
-        //     $output .='<li class="li_cursor_mouse" style="padding: 5px 10px;"><a class="a_cursor_mouse">'.$value->name.'</a></li>';
-        // }
-        // $output .= '</ul>';
 
         if(count($product) > 0 ){
             return response()->json([

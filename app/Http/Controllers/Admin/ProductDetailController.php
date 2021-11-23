@@ -120,15 +120,6 @@ class ProductDetailController extends Controller
             
             $product_detail->save();
 
-            // dd($product_detail->size);
-            // if(!empty($request->image))
-            // {
-            //     $imageName=$product_detail->id."_".$product_detail->size->name."_".$product_detail->color->name.".".$request->image->getClientOriginalExtension();
-            //     $request->image->move(public_path('images/product'), $imageName);
-            //     $product_detail->image = '/images/product/'.$imageName;
-            // }
-            // $product_detail->save();
-
             return redirect()->back()->with('success','Tạo chi tiết sản phẩm thành công');
         }
         
@@ -164,18 +155,6 @@ class ProductDetailController extends Controller
         $product_detail->name = $product_detail_name;
 
         $product_detail->save();
-
-        // if(!empty($request->image))
-        // {
-        //     if(File::exists(public_path().$product_detail->image)) {
-        //         File::delete(public_path().$product_detail->image);
-        //     }
-        //     $imageName=$product_detail->id."_".$product_detail->size->name."_".$product_detail->color->name.".".$request->image->getClientOriginalExtension();
-        //     $request->image->move(public_path('images/product'), $imageName);
-        //     $product_detail->image = '/images/product/'.$imageName;
-        //     // dd($product_detail->image);
-        // }
-        // $product_detail->save();
 
         return redirect()->back()->with('success', 'Cập nhật chi tiết sản phẩm thành công');
     }

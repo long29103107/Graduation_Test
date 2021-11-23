@@ -8,13 +8,9 @@ class CheckController extends Controller
 {
     public function checkout(){
         $category_product = DB::table('categories')->orderBy('category_id','desc')->get();
-        //table category_product này ở đâu á ?
-        //nhầm
         return view('pages.checkout.show_checkout')->with('category_product',$category_product);
     }
     public function save_checkout(Request $request){
-        //đây cũng lưu kiểu model luôn không lưu kiểu insert
-        //Chưa validator request
         $data = array();
         $data['shipping_name'] = $request->shipping_name;
         $data['shipping_email'] = $request->shipping_email;

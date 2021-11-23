@@ -1,0 +1,65 @@
+FILE HƯỚNG DẪN SỬ DỤNG ĐỒ ÁN TỐT NGHIỆP
+- Cài đặt Nodejs: https://nodejs.org/en/
+- Cài đặt Composer: https://getcomposer.org/
+- Cài đặt Xampp, PHP: https://www.apachefriends.org/download.html
+
+1. Mở project, cài đặt node_module.
+- npm  install
+2. Cài đặt composer.
+- composer install
+3. Tạo database có collation là utf8mb4_general_ci, database name là shop (hoặc đặt tên database tuỳ ý của mình).
+4. Cấu hình .env
+- DB_PORT = 3308 hoặc 3306 tuỳ vào port mysql đang sử dụng.
+- DB_DATABASE  = shop (tên database).
+5. Tạo bảng và dữ liệu
+	*Cách 1: Tạo bằng migrate và seeder
+	- Tạo migrate: php artisan migrate (xoá bảng cũ tạo bảng mới dùng php artisan migrate:fresh) 
+	- Tạo dữ liệu: 
+		+ php artisan db:seed
+		+ php artisan hcvn:install
+	*Cách 2: Thêm file shop.sql vào Mysql
+6. Bắt đầu trang web
+- Mở terminal thứ 1: npm run watch
+- Mở terminal thứ 2: php artisan serve
+7. Mở trình duyệt web
+- Dùng url localhost:8000
+
+***************
+Tài khoản đăng nhập
+- Admin
+Username: long@gmail.com
+Password: 12345678
+
+- Customer
+Username: lan@gmail.com
+Password: 12345678
+
+***************
+Thanh toán bằng Momo
+Tải ứng dụng testing: https://test-payment.momo.vn/download/
+
+Tài khoản :
+//Thành công
+Số điện thoại: 0917030300
+Mật khẩu: 000000
+Mã xác thực (OTP): 000000
+
+//Tài khoản có 30 triệu
+Số điện thoại: 0919100100
+Mật khẩu: 000000
+Mã xác thực (OTP): 000000
+
+//Tài khoản có 30 triệu
+Số điện thoại: 0919010010
+Mật khẩu: 000000
+Mã xác thực (OTP): 000000
+
+***************
+Thanh toán bằng VNPay:
+
+Tài khoản :
+Ngân hàng: NCB
+Số thẻ: 9704198526191432198
+Tên chủ thẻ:NGUYEN VAN A
+Ngày phát hành:07/15
+Mật khẩu OTP:123456

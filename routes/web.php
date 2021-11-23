@@ -45,7 +45,6 @@ Route::get('checkout','CheckoutController@checkout');
 Route::post('checkout-vnp','CheckoutController@checkoutVNPay');
 Route::get('return-vnpay','CheckoutController@returnVNPay');
 Route::get('return-momo','CheckoutController@returnMomo');
-// Route::post('save-checkout','CheckoutController@save_checkout');
 Route::post('checkout','CheckoutController@store');
 
 Route::get('check-discount','CheckoutController@checkDiscount');
@@ -65,12 +64,7 @@ Route::post('update-cart-quantity','CartController@update_cart_quantity');
 //Cart Ajax
 Route::post('/add-cart-ajax','CartController@add_cart_ajax');
 Route::get('show-cart-ajax','CartController@show_cart_ajax');
-// Route::get('delete-product/{session_id}','CartController@delete_product');
-// Route::post('update-cart','CartController@update_cart');
 Route::get('delete-all-product','CartController@delete_all_product');
-
-//Order
-// Route::get('order','OrderController@show_order');
 
 //Wishlist
 Route::post('add-wishlist','ProductController@add_wishlist');
@@ -94,8 +88,6 @@ Route::post('load-comment','ProductController@load_comment');
 
 //About
 Route::get('/about','AboutController@index')->name('user.about.index');
-// Route::get('/test','AboutController@test')->name('user.about.test');
-// Route::post('/test','AboutController@postTest')->name('user.about.postTest');
 
 //Terms
 Route::get('/terms','TermsController@index')->name('user.terms.index');
@@ -127,13 +119,5 @@ Route::get('/discount','DiscountController@index')->name('user.discount.index');
 Route::get('post-cate/{path}','PostController@show_post_cate');
 Route::get('post/{path}','PostController@show_post');
 
-//Compare
-// Route::post('save-compare-product','ProductController@save_compare_product');
-// Route::post('compare-product','ProductController@compare_product');
-
 //Info-Contact
 Route::get('infor-contact','InforContactController@infor_contact');
-
-//Tab-Product
-// Route::post('product-tabs','CategoryController@product_tabs');
-// Route::post('wrap-product','CategoryController@wrap_product');

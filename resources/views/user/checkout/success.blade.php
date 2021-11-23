@@ -15,11 +15,7 @@
 <section id="cart_items">
     <div class="container">
         @include('layouts.user.breadcrumb')
-        {{-- <div class="row">
-            <div class="col-12">
-                <center><h2>Bạn đã đặt hàng thành công</h2></center>
-            </div>
-        </div> --}}
+    
         <div class="review-payment">
             <h1 class="">Thông tin đơn hàng #{{$order->id}}</h1>
         </div>

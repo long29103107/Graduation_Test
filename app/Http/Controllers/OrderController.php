@@ -88,10 +88,12 @@ class OrderController extends Controller
         {
             abort(404);
         }
+        $infor_contact = InforContact::all();
         $categories = Category::whereNull('deleted_at')->get();
         $data = [
             'categories' => $categories,
             'order' => $order,
+            'infor_contact' => $infor_contact,
             'category_post' => $category_post,
             'breadcrumbs' => [
                 [

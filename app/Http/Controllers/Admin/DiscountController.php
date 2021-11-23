@@ -220,54 +220,6 @@ class DiscountController extends Controller
 
             return redirect()->route('admin.discount.index')->with('success','Tạo giảm giá thành công');
         }
-
-       //Edit discount
-    //    $discount = Discount::whereNull('deleted_at')->where('id',$request->id)->first();
-    //    if(empty($discount))
-    //    {
-    //         return redirect()->back()->with('error','Không tìm thấy giảm giá');
-    //    }
-
-    //    if($request->type_discount == "product")
-    //    {
-    //        if(empty($request->id_product))
-    //        {
-    //            return redirect()->back()->with('error','Cần chọn danh mục hoặc sản phẩm cần giảm giá');
-    //        }
-    //        $list = explode(",", $request->id_product);
-    //    }
-    //    else
-    //    {
-    //        if(empty($request->id_category))
-    //        {
-    //            return redirect()->back()->with('error','Cần chọn danh mục hoặc sản phẩm cần giảm giá');
-    //        }
-    //        $list = explode(",", $request->id_category);
-    //    }
-
-    //    if(empty($request->discount_code))
-    //    {
-    //     $flag = false;
-    //     $str_random = Str::upper(Str::random(20));
-    //     do
-    //     {
-    //         $discount_random = Discount::whereNull('deleted_at')->where('discount_code',$str_random)->get();
-    //         if(empty($discount_random))
-    //         {
-    //             $flag = true;
-    //         }
-    //     }while($flag);
-    //    }
-
-    //    $discount->user_id = Auth::id();
-    //    $discount->discount_code = $request->discount_code ?? $str_random;
-    //    $discount->type = $request->type_discount;
-    //    $discount->sale_percent = $request->sale_price;
-    //    $discount->start_date = $request->start_date;
-    //    $discount->end_date = $request->end_date;
-    //    $discount->apply = json_encode($list);
-    //    $discount->save();
-    //    return redirect()->back()->with('success','Cập nhật giảm giá thành công');
     }
     public function delete(Request $request)
     {
@@ -277,12 +229,6 @@ class DiscountController extends Controller
             $discount = Discount::find($id);
             if(!empty($discount))
             {
-                // $order_detail = OrderDetail::whereNull('deleted_at')->where('discount_id',$discount->id)->get();
-                // if(!empty($order_detail))
-                // {
-                //     return redirect()->back()->with('error', 'Đơn hàng có giảm giá chưa được xoá');
-                // }
-
                 $discount->delete();
             }
         }

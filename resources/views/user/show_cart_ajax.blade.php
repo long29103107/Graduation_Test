@@ -3,12 +3,6 @@
 
 <section id="cart_items">
     <div class="container">
-        {{-- <div class="breadcrumbs">
-            <ol class="breadcrumb">
-                <li><a href="{{URL::to('home')}}">Trang chủ</a></li>
-                <li class="active">Giỏ hàng</li>
-            </ol>
-        </div> --}}
         @if(session()->has('message'))
             <div class="alert alert-success">
                 {{ session()->get('message') }}
@@ -138,22 +132,5 @@
     </div>
 </section> <!--/#cart_items-->
 <section id="do_action">
-		{{--<div class="container">
-			<div class="row">
-				<div class="col-sm-6">
-					<div class="total_area">
-						<ul>
-							<!-- <li>Cart Sub Total <span>{{Cart::total()}}</span></li>
-							<li>Eco Tax <span>{{Cart::tax()}}</span></li> -->
-							
-						</ul>
-							<!-- <a class="btn btn-default update" href="">Cập nhật</a> -->
-							
-							
-							
-					</div>
-				</div>
-			</div>
-		</div>--}}
 	</section><!--/#do_action-->
 @endsection

@@ -50,13 +50,6 @@ class SlideController extends Controller
         {
             return redirect()->back()->withError($validator->errors()->first());
         }
-        // $regex = "((https?|ftp)\:\/\/)?";
-        // $regex .= "([a-z0-9+!*(),;?&=\$_.-]+(\:[a-z0-9+!*(),;?&=\$_.-]+)?@)?";
-        // $regex .= "([a-z0-9-.]*)\.([a-z]{2,3})";
-        // $regex .= "(\:[0-9]{2,5})?";
-        // $regex .= "(\/([a-z0-9+\$_-]\.?)+)*\/?";
-        // $regex .= "(\?[a-z+&\$_.-][a-z0-9;:@&%=+\/\$_.-]*)?";
-        // $regex .= "(#[a-z_.-][a-z0-9+\$_.-]*)?";
         $regex =  '(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w\#!:.?+=&%!\-\/]))?';
 
         if (!preg_match("/^$regex$/i", $request->path)) {

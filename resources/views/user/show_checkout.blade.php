@@ -5,11 +5,6 @@
 	<div class="container">
 		@include('layouts.user.breadcrumb')
 
-		<!-- <div class="register-req">
-			<p>Làm ơn đăng ký hoặc đăng nhập để thanh toán giỏ hàng và xem lại lịch sử mua hàng</p>
-		</div> -->
-		<!--/register-req-->
-
 		<div class="shopper-informations">
 			<div class="row">				
 				<div class="col-sm-12 clearfix">
@@ -44,35 +39,6 @@
 								</div>
 								<input type="submit" value="Xác nhận đơn hàng" name="send_order" class="btn btn-primary btn-sm send_order">
 							</form>
-							<form>
-							
-							<!-- <div class="form-group">
-								<label for="exampleInputPassword1">Chọn thành phố</label>
-									<select name="city" id="city" class="form-control input-sm m-bot15 choose city">
-								
-										<option value="">--Chọn tỉnh thành phố--</option>
-	
-								</select>
-							</div>
-							<div class="form-group">
-								<label for="exampleInputPassword1">Chọn quận huyện</label>
-									<select name="province" id="province" class="form-control input-sm m-bot15 province choose">
-										<option value="">--Chọn quận huyện--</option>
-										
-								</select>
-							</div>
-								<div class="form-group">
-								<label for="exampleInputPassword1">Chọn xã phường</label>
-									<select name="wards" id="wards" class="form-control input-sm m-bot15 wards">
-										<option value="">--Chọn xã phường--</option>   
-								</select>
-							</div>
-							
-							
-							<input type="button" value="Tính phí vận chuyển" name="calculate_order" class="btn btn-primary btn-sm calculate_delivery">
-
-
-							</form> -->
 
 						</div>
 						

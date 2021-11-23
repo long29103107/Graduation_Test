@@ -26,9 +26,8 @@ class PostController extends Controller
         
         $categories = Category::whereNull('deleted_at')->get();
         $category_post = PostCate::where('status',1)->get();
-        // $posts = Post::join('post_cate', 'post_cate.id','posts.post_cate_id')->where('post_cate.post_path',$path)->where('posts.status',1)->orderBy('posts.id', 'desc')->paginate(5);
         $post_cate = PostCate::where('post_path', $path)->first();
-        // dd($post_cate);
+
         $title = $post_cate->post_name ?? '';
         $infor_contact = InforContact::all();
         return view('user.post.show_post_cate', compact('infor_contact','title','posts','category_post','categories'));

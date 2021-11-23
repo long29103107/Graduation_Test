@@ -85,14 +85,6 @@
                       </div>	
                 </div>		
 
-        {{-- <div class="row form-group">
-            <div class="col-sm-12">
-                <label>Địa chỉ</label>
-                <input id="address" type="text" name="address" @if($flag) value="{{$rows->address}}" @endif placeholder="Địa chỉ" class="form-control">
-                <div class="error error-address" 	@if($errors->has('address')) style="display:block" @endif>{{$errors->first('address')}}</div>
-            </div>
-        </div>		 --}}
-
                 <div class="form-group row">
                     <div class="col-sm-12">
                         <label class="label-check">Giới tính</label>

@@ -6,7 +6,6 @@
 						<div class="single-widget">
 							<h2>Về E-Shopper</h2>
 							<ul class="nav nav-pills nav-stacked" style="flex-direction: column-reverse;">
-								{{-- <li><a href="#">Tìm kiếm</a></li> --}}
 								<li><a href="{{ url('/about') }}">Giới thiệu</a></li>
 								<li><a href="{{ url('/exchange') }}">Chính sách đổi trả</a></li>
 								<li><a href="{{ url('/privacy') }}">Chính sách bảo mật</a></li>

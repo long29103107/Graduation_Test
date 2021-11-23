@@ -109,15 +109,6 @@ class UserController extends Controller
             {
                 return redirect('/admin/dashboard');
             }
-            // Session::put('Success',1);
-            // $users = Auth::user();
-            // Session::put('id_login',$users->id);    
-            
-            // $check = Session::get('check');
-            // if($check == 'login_checkout')
-            // {
-            //     return view('user.show_checkout')->with('users', $users);
-            // }
            
             return redirect('/');
         }
@@ -285,36 +276,4 @@ class UserController extends Controller
 
         return  redirect()->back()->with('success','Đổi mật khẩu thành công');
     }
-
-    // public function checkPermissionComment(Request $request)
-    // {
-    //     $comment_id = $request->id;
-    //     $user_id = (int) $request->user_id;
-
-    //     $user = User::find($user_id);
-    //     if($user->hasRole('administrator'))
-    //     {
-    //         return response()->json([
-    //             'error'=> false,
-    //             'message'=>'Vai trò admin',
-    //             'data'=>true,
-    //         ]);
-    //     }
-
-    //     $comment = Comment::find($comment_id);
-    //     if($comment->user_id == $user_id)
-    //     {
-    //         return response()->json([
-    //             'error'=> false,
-    //             'message'=>'Vai trò tác giả',
-    //             'data'=>true,
-    //         ]);
-    //     }
-
-    //     return response()->json([
-    //         'error'=> true,
-    //         'message'=>'Không có quyền',
-    //         'data'=>false,
-    //     ]);
-    // }
 }

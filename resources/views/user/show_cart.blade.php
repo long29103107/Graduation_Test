@@ -28,8 +28,6 @@
 				<div class="table-responsive cart_info">	
 					@php
 						$cart = Session::get('cart');
-						// Session::forget('cart');
-						// return;
 					@endphp
 					<table class="table table-condensed">
 						<thead>
@@ -46,7 +44,6 @@
 							@php $total = 0; @endphp
 							@foreach($cart as $item)
 							@php $total += $item['price'] * $item['qty']@endphp
-							{{-- {{dd(Session::get('cart'))}} --}}
 								<tr>
 									<td class="cart_product">
 										<img class="img_cart" @if(empty(getImageProduct($item['product']))) src="{{asset('images/product/no-image-product.png')}}" @else src="{{asset(getImageProduct($item['product']))}}" @endif alt="">
@@ -117,22 +114,8 @@
 				</div>
 				<div class="total_area">
 					<ul>
-						{{-- <li>Phí giao hàng <span>Miễn phí</span></li> --}}
 						<li class="total_box">Tổng tiền <span id="total_cart">{{ number_format($total)}}&#8363;</span></li>
 					</ul>
-						<!-- <a class="btn btn-default update" href="">Cập nhật</a> -->
-						<?php
-							//$Success = Session::get('Success');
-							// if($Success == 1 ){
-						?>
-							{{-- <a class="btn btn-default check_out" href="{{URL::to('/checkout')}}">Thanh toán</a> --}}
-						<?php
-							// } else{
-						?>
-							{{-- <a class="btn btn-default check_out" href="{{URL::to('/login-checkout')}}">Thanh toán</a> --}}
-						<?php
-							// }
-						?>
 					<div class="row">
 						<div class="col-12">
 							<p class="pl-55">Phí vận chuyển sẽ được tính ở trang thanh toán. Bạn cũng có thể nhập mã giảm giá ở trang thanh toán.</p>

@@ -140,49 +140,7 @@
             </div>
         </div>
     </div>
-    
-    <!-- Modal -->
-{{-- <div class="modal fade" id="xemnhanh" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title product_quickview_title" id="">
-                    <span id="product_quickview_title"></span>
-                </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-top: -26px; font-size: 30px; color: #FE980F">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-5">
-                        <span id="product_quickview_image"></span>
-                    </div>
-                    <form>
-                    <div class="col-md-7">
-                    @csrf
-                        <h2 class="product_quickview_title"><span id="product_quickview_title"></span></h2>
-                        <!-- <label>Mã ID: </label>
-                        <p><span id="product_quickview_id"></span></p> -->
-                        <label>Giá sản phẩm: </label>
-                        <p><span id="product_quickview_price"></span></p>
-                        <label>Mô tả sản phẩm: </label>
-                        <p><span id="product_quickview_description"></span></p>
-                        <!-- <label>Số lượng:</label>
-                        <input name="quty" type="number" min="1" class="cart_product_qty_ style_home" value="1" /> <br />
-                        
-                        <input name="add-to-cart" type="button" class="btn btn-primary btn-sm add-to-cart btn-custom" value="Mua ngay" />  -->
-                    </div>
-                    </form>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <a title="Thêm sản phẩm vào giỏ hàng" name="add_to_cart_quick_view" type="button" class="btn btn-primary btn-custom">Mua ngay</a>
-                <a type="submit" href="{{URL::to('cart')}}" class="btn btn-primary btn-custom">Đi tới sản phẩm</a>
-            </div>
-        </div>
-    </div>
-</div> --}}
+
 </section>
 @endsection
 @section('script')
